@@ -18,7 +18,7 @@ import org.robolectric.RobolectricTestRunner
 @RunWith(RobolectricTestRunner::class)
 @HiltAndroidTest
 @UninstallModules(TasksRepositoryModule::class)
-class SecondActivityTest{
+class SecondActivityTest {
 
     @get:Rule
     val hiltRule = HiltAndroidRule(this)
@@ -35,5 +35,4 @@ class SecondActivityTest{
         Espresso.onView(ViewMatchers.withId(R.id.textViewSum)).check(ViewAssertions.matches(ViewMatchers.withText("4")))
         scenario.close()
     }
-
 }

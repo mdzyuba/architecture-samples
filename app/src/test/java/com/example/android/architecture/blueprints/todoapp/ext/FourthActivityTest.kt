@@ -35,5 +35,4 @@ class FourthActivityTest {
         Espresso.onView(ViewMatchers.withId(R.id.textViewSum)).check(ViewAssertions.matches(ViewMatchers.withText("8")))
         scenario.close()
     }
-
 }
