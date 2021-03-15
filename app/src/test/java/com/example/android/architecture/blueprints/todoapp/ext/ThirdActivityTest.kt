@@ -37,6 +37,5 @@ class ThirdActivityTest {
     }
 
     fun foo() {
-
     }
 }
