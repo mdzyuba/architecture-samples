@@ -74,6 +74,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+    }
 }
 
 /*
@@ -93,6 +97,7 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$androidXLegacySupport"
     implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
     implementation "androidx.room:room-runtime:$roomVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     kapt "androidx.room:room-compiler:$roomVersion"
 
     // Architecture Components
@@ -113,8 +118,11 @@ dependencies {
 
     // Hilt testing
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
+    testImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
     kaptAndroidTest "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
+    kaptTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    kaptTest "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
 
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junitVersion"
@@ -166,4 +174,12 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+}
+
+// If you use an Android Gradle Plugin version lower than 4.2, enable transforming
+// @AndroidEntryPoint classes in local unit tests by applying the following configuration
+// in your module's build.gradle file
+hilt {
+    enableTransformForLocalTests = true
+    // enableExperimentalClasspathAggregation = true
 }
